@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">zonal</string>
+
+    <array name="planets_array">
+        <item>novo</item>
+        <item>usado</item>
+    </array>
+
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph_home"
+    app:startDestination="@id/feedsFragment">
+
+    <fragment
+        android:id="@+id/feedsFragment"
+        android:name="mz.co.zonal.view.ui.FeedsFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_feeds" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="mz.co.zonal.view.ui.user.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_ownProductsActivity2"
+            app:destination="@id/ownProductsActivity2" />
+        <action
+            android:id="@+id/action_userFragment_to_accountInfoActivity2"
+            app:destination="@id/accountInfoActivity2" />
+    </fragment>
+    <fragment
+        android:id="@+id/feedbackFragment2"
+        android:name="mz.co.zonal.view.ui.FeedbackFragment"
+        android:label="fragment_feedback"
+        tools:layout="@layout/fragment_feedback" >
+        <action
+            android:id="@+id/action_feedbackFragment2_to_productDetailsActivity"
+            app:destination="@id/productDetailsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="mz.co.zonal.view.ui.SearchFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_search" />
+    <activity
+        android:id="@+id/accountInfoActivity2"
+        android:name="mz.co.zonal.view.ui.user.AccountInfoActivity"
+        android:label="activity_account_info"
+        tools:layout="@layout/activity_account_info" />
+    <activity
+        android:id="@+id/ownProductsActivity2"
+        android:name="mz.co.zonal.view.ui.product.OwnProductsActivity"
+        android:label="activity_own_products"
+        tools:layout="@layout/activity_own_products" />
+    <activity
+        android:id="@+id/productDetailsActivity"
+        android:name="mz.co.zonal.view.ui.product.ProductDetailsActivity"
+        android:label="activity_product_details"
+        tools:layout="@layout/activity_product_details" />
+    <activity
+        android:id="@+id/sellProductActivity2"
+        android:name="mz.co.zonal.view.ui.product.SellProductActivity"
+        android:label="activity_sell_product"
+        tools:layout="@layout/activity_sell_product" />
+</navigation>

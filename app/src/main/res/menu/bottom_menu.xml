@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="inicio"
+        android:id="@+id/feedsFragment"
+        android:icon="@drawable/ic_home"/>
+
+    <item android:title="pesquisar"
+        android:id="@+id/cartFragment"
+        android:icon="@drawable/ic_search"/>
+
+    <item android:title="vender"
+        android:id="@+id/sellProductActivity2"
+        android:icon="@drawable/ic_add"/>
+
+    <item android:title="usuário"
+        android:id="@+id/userFragment"
+        android:icon="@drawable/ic_user"/>
+
+</menu>

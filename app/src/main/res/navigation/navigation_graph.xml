@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@+id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="mz.co.zonal.view.ui.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="mz.co.zonal.view.ui.FeedsFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_feeds" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="mz.co.zonal.view.ui.user.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="mz.co.zonal.view.ui.user.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="mz.co.zonal.view.ui.user.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="mz.co.zonal.view.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/feedbackFragment"
+        android:name="mz.co.zonal.view.ui.FeedbackFragment"
+        android:label="fragment_feedback"
+        tools:layout="@layout/fragment_feedback" />
+    <fragment
+        android:id="@+id/userFragment2"
+        android:name="mz.co.zonal.view.ui.user.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment2_to_ownProductsActivity"
+            app:destination="@id/ownProductsActivity" />
+        <action
+            android:id="@+id/action_userFragment2_to_accountInfoActivity"
+            app:destination="@id/accountInfoActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/ownProductsActivity"
+        android:name="mz.co.zonal.view.ui.product.OwnProductsActivity"
+        android:label="activity_own_products"
+        tools:layout="@layout/activity_own_products" />
+    <activity
+        android:id="@+id/accountInfoActivity"
+        android:name="mz.co.zonal.view.ui.user.AccountInfoActivity"
+        android:label="activity_account_info"
+        tools:layout="@layout/activity_account_info" />
+    <activity
+        android:id="@+id/productDetailsActivity2"
+        android:name="mz.co.zonal.view.ui.product.ProductDetailsActivity"
+        android:label="activity_product_details"
+        tools:layout="@layout/activity_product_details" />
+</navigation>
