@@ -7,11 +7,30 @@
     android:orientation="vertical"
     tools:context=".view.ui.product.ProductDetailsActivity">
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_container_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/slider_layout_placeholder"/>
+            <include layout="@layout/content_single_product_placeholder"/>
+
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_details"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
@@ -27,27 +46,57 @@
                 app:expandedTitleMarginStart="48dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <com.denzcoskun.imageslider.ImageSlider
-                    android:id="@+id/imageSlider"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:background="@color/material_white"
-                    app:auto_cycle="true"
-                    app:corner_radius="30"
-                    app:delay="0"
-                    app:selected_dot="@color/material_red500"
-                    app:error_image="@drawable/ic_picture"
-                    app:layout_collapseMode="parallax"
-                    app:period="1000"
-                    app:placeholder="@drawable/ic_picture" />
 
-                <androidx.appcompat.widget.Toolbar
+              <androidx.viewpager.widget.ViewPager
+                  android:id="@+id/view_pager"
+                  android:layout_width="match_parent"
+                  android:background="@color/material_white"
+                  android:layout_height="300dp"/>
+
+                <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar_details"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
+                    android:background="@drawable/toolbar_gradient"
                     app:popupTheme="@style/AppTheme.PopupOverlay"
-                    app:navigationIcon="@drawable/ic_arrow_to_left"/>
+                    app:navigationIcon="@drawable/ic_arrow_to_left">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_edit_product"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:drawableTint="@color/material_white"
+                            android:drawableStart="@drawable/ic_edit_item"
+                            android:layout_toStartOf="@id/tv_share_product"
+                            android:layout_marginEnd="20dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_share_product"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@id/tv_more"
+                            android:drawableStart="@drawable/ic_share"
+                            android:drawableTint="@color/material_white"
+                            android:layout_marginEnd="20dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_more"
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableTint="@color/material_white"
+                            android:drawableStart="@drawable/ic_more"
+                            android:layout_marginEnd="18dp"/>
+
+                    </RelativeLayout>
+
+                </com.google.android.material.appbar.MaterialToolbar>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -76,7 +125,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/chat"
-            style="@style/PrimaryButton"
+            android:visibility="gone"
+            style="@style/primaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"

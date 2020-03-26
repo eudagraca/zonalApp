@@ -7,9 +7,17 @@
 
     <fragment
         android:id="@+id/feedsFragment"
-        android:name="mz.co.zonal.view.ui.FeedsFragment"
+        android:name="mz.co.zonal.view.ui.product.FeedsFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_feeds" />
+        tools:layout="@layout/fragment_feeds" >
+
+        <action
+            android:id="@+id/action_feedsFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_feedsFragment_to_categorySearchActivity"
+            app:destination="@id/categorySearchActivity" />
+    </fragment>
     <fragment
         android:id="@+id/userFragment"
         android:name="mz.co.zonal.view.ui.user.UserFragment"
@@ -21,6 +29,12 @@
         <action
             android:id="@+id/action_userFragment_to_accountInfoActivity2"
             app:destination="@id/accountInfoActivity2" />
+        <action
+            android:id="@+id/action_userFragment_to_soldProductsActivity"
+            app:destination="@id/soldProductsActivity" />
+        <action
+            android:id="@+id/action_userFragment_to_chatListActivity"
+            app:destination="@id/chatListActivity" />
     </fragment>
     <fragment
         android:id="@+id/feedbackFragment2"
@@ -33,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="mz.co.zonal.view.ui.SearchFragment"
+        android:name="mz.co.zonal.view.ui.product.SearchFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_search" />
     <activity
@@ -56,4 +70,29 @@
         android:name="mz.co.zonal.view.ui.product.SellProductActivity"
         android:label="activity_sell_product"
         tools:layout="@layout/activity_sell_product" />
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="mz.co.zonal.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/bestSellerFragment"
+        android:name="mz.co.zonal.view.ui.user.BestSellerFragment"
+        android:label="fragment_best_seller"
+        tools:layout="@layout/fragment_best_seller" />
+    <activity
+        android:id="@+id/soldProductsActivity"
+        android:name="mz.co.zonal.view.ui.product.SoldProductsActivity"
+        android:label="SoldProductsActivity" />
+    <activity
+        android:id="@+id/categorySearchActivity"
+        android:name="mz.co.zonal.view.ui.product.CategorySearchActivity"
+        android:label="activity_category_search"
+        tools:layout="@layout/activity_category_search" />
+    <activity
+        android:id="@+id/chatListActivity"
+        android:name="mz.co.zonal.view.ui.message.ChatListActivity"
+        android:label="activity_chat_list"
+        tools:layout="@layout/activity_chat_list" />
 </navigation>

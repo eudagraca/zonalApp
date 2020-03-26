@@ -12,7 +12,8 @@ import com.bumptech.glide.signature.ObjectKey
 class GlideApp : AppGlideModule() {
     override fun applyOptions(context: Context, builder: GlideBuilder) {
         super.applyOptions(context, builder)
-        builder.apply { RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL).signature(
+        builder.apply {
+            RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL).signature(
             ObjectKey(System.currentTimeMillis().toShort())
         ) }
     }

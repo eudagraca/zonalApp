@@ -5,6 +5,11 @@
 
     <data>
 
+        <variable
+            name="user"
+            type="mz.co.zonal.viewmodel.UserViewModel" />
+
+        <import type="mz.co.zonal.utils.converters.DateUtils"/>
 
     </data>
 
@@ -68,6 +73,7 @@
                         android:id="@+id/iv_profileImage_edit"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        app:image="@{user.imageProfile(user.userLogged.id)}"
                         android:scaleType="centerCrop"
                         android:src="@drawable/background" />
 
@@ -106,9 +112,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:enabled="false"
+                        android:text="@{user.userLogged.fullName}"
                         android:imeOptions="actionNext"
                         android:inputType="textPersonName"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/material_red500"
                         android:fontFamily="@font/montserrat_regular"
                         android:textSize="@dimen/normal_text" />
 
@@ -135,9 +142,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:enabled="false"
+                        android:text="@{user.userLogged.email}"
                         android:imeOptions="actionNext"
                         android:inputType="textEmailAddress"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/material_red500"
                         android:fontFamily="@font/montserrat_regular"
                         android:textSize="@dimen/normal_text" />
 
@@ -165,9 +173,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:enabled="false"
+                        android:text="@{String.valueOf(user.userLogged.phoneNumber)}"
                         android:imeOptions="actionNext"
                         android:inputType="phone"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/material_red500"
                         android:fontFamily="@font/montserrat_regular"
                         android:textSize="@dimen/normal_text" />
 
@@ -191,7 +200,8 @@
                     android:layout_marginStart="10dp"
                     android:labelFor="@+id/til_phone_edit"
                     android:layout_marginTop="10dp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:date="@{user.userLogged.createAt}"
+                    android:textColor="@color/material_red500"
                     android:fontFamily="@font/montserrat_regular"
                     android:textSize="@dimen/medium_text" />
 
@@ -199,7 +209,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/signIn"
                     android:visibility="gone"
-                    style="@style/PrimaryButton"
+                    style="@style/primaryButton"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="mz.co.zonal.view.ui.FeedsFragment"
+        android:name="mz.co.zonal.view.ui.product.FeedsFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_feeds" />
     <fragment

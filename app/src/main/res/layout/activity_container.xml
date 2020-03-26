@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/material_white"
+    tools:openDrawer="end">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/root_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,6 +20,168 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/navigation_graph" />
+        app:navGraph="@navigation/navigation_graph"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="70dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- The navigation drawer -->
+    <LinearLayout
+        android:id="@+id/left_drawer"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end|bottom"
+        android:padding="20dp"
+        android:background="@color/material_white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:layout_marginBottom="10dp"
+                android:text="Categoria"/>
+
+            <io.pravikant.materialspinner.MaterialSpinner
+                android:id="@+id/categories_spinner"
+                style="@style/InputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Marca"
+                android:textColorHint="@color/material_grey500"
+                android:textSize="@dimen/medium_text" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mb_cat_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nenhuma cateoria"
+                android:padding="5dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:visibility="gone"
+                app:icon="@drawable/ic_delete"
+                android:fontFamily="@font/montserrat_light"
+                android:textColor="@color/material_grey700"
+                app:strokeColor="@color/material_redA400"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:textAllCaps="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="Estado"/>
+
+
+            <io.pravikant.materialspinner.MaterialSpinner
+                android:id="@+id/type_spinner"
+                style="@style/InputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Marca"
+                android:layout_marginTop="10dp"
+                android:textColorHint="@color/material_grey500"
+                android:textSize="@dimen/medium_text" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mb_status_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estado"
+                android:visibility="gone"
+                android:paddingTop="5dp"
+                app:icon="@drawable/ic_delete"
+                android:fontFamily="@font/montserrat_light"
+                android:paddingBottom="5dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColor="@color/material_grey700"
+                app:strokeColor="@color/material_redA400"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:textAllCaps="false"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:layout_marginTop="20dp"
+                android:text="Preço"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/InputEditText"
+                    android:id="@+id/tie_min"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:layout_height="wrap_content"
+                    android:hint="Mínimo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="-"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/InputEditText"
+                    android:id="@+id/tie_max"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:layout_height="wrap_content"
+                    android:hint="Máximo" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/mb_reset"
+                    style="@style/secondaryButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/material_white"
+                    app:backgroundTint="@color/material_red200"
+                    android:textColorHint="@color/material_white"
+                    android:layout_height="wrap_content"
+                    android:hint="Reiniciar" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/primaryButton"
+                    android:id="@+id/mbDone"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/material_white"
+                    android:textColor="@color/material_white"
+                    android:hint="Feito" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

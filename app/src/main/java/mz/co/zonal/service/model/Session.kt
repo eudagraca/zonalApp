@@ -2,10 +2,38 @@ package mz.co.zonal.service.model
 
 import android.content.Context
 import android.content.SharedPreferences
-import mz.co.zonal.utils.Converters
+import androidx.preference.PreferenceManager
 
 
 class Session(val context: Context) {
+
+    private val preferences: SharedPreferences
+        get() = PreferenceManager.getDefaultSharedPreferences(context)
+
+    fun setLogIn(
+        loggedIn: Boolean,
+        id: Long?) {
+        editor.putBoolean(LOGIN, loggedIn)
+        editor.putLong(ID, id!!)
+        editor.apply()
+        editor.commit()
+    }
+
+    fun setLatLong(
+        lat: String,
+        long: String ) {
+        editor.putString(LAT, lat)
+        editor.putString(LONG, long)
+        editor.apply()
+        editor.commit()
+    }
+
+    fun setToken(
+        token: String ) {
+        editor.putString(TOKEN, token)
+        editor.apply()
+        editor.commit()
+    }
 
     fun setLogIn(
         loggedIn: Boolean,
@@ -14,12 +42,11 @@ class Session(val context: Context) {
         email: String?,
         cellphone: Int?,
         id: Long?,
-        createAt: String
-    ) {
+        createAt: String?) {
         editor.putBoolean(LOGIN, loggedIn)
         editor.putString(FULL_NAME, fullName)
         editor.putString(EMAIL, email)
-        editor.putString(ID, id.toString())
+        editor.putLong(ID, id!!)
         editor.putString(PHONE_NUMBER, cellphone.toString())
         editor.putString(TOKEN, token)
         editor.putString(CREATE_AT, createAt.toString())
@@ -28,44 +55,48 @@ class Session(val context: Context) {
     }
 
     fun loggedIn(): Boolean {
-        return prefs.getBoolean("loggedInMode", false)
+        return preferences.getBoolean("loggedInMode", false)
     }
 
     val fullName: String?
-        get() = prefs.getString(FULL_NAME, "")
+        get() = preferences.getString(FULL_NAME, "")
 
-    val id: Int
-        get() = prefs.getInt(ID, 0)
-
+    val id: Long?
+        get() = preferences.getLong(ID, 0L)
 
     val email: String?
-        get() = prefs.getString(EMAIL, "")
+        get() = preferences.getString(EMAIL, "")
 
     val phoneNumber: String?
-        get() = prefs.getString(PHONE_NUMBER, "")
+        get() = preferences.getString(PHONE_NUMBER, "")
 
     val token: String?
-        get() = prefs.getString(TOKEN, "")
+        get() = preferences.getString(TOKEN, "")
+
+    val lat: String?
+        get() = preferences.getString(LAT, "")
+
+    val long: String?
+        get() = preferences.getString(LONG, "")
+
 
     val createAt: String?
-        get() = prefs.getString(CREATE_AT, "")
+        get() = preferences.getString(CREATE_AT, "")
 
     companion object {
         private const val LOGIN = "loggedInMode"
-        private const val MyPREFERENCES = "MyPrefs"
+        private const val LAT = "longitude"
+        private const val LONG = "latitude"
         private const val ID = "id"
         private const val FULL_NAME = "fullName"
         private const val EMAIL = "email"
         private const val PHONE_NUMBER = "phoneNUmber"
         private const val TOKEN = "token"
         private const val CREATE_AT = "createAt"
-        private lateinit var prefs: SharedPreferences
         private lateinit var editor: SharedPreferences.Editor
     }
 
     init {
-        prefs =
-            context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE)
-        editor = prefs.edit()
+        editor = preferences.edit()
     }
 }

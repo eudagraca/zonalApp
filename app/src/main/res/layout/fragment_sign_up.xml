@@ -60,7 +60,9 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="50">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 style="@style/InputEditText"
@@ -69,13 +71,16 @@
                                 android:hint="Nome"
                                 android:text="@={user.user.fullName}"
                                 android:imeOptions="actionNext"
+                                android:maxLength="50"
                                 android:inputType="textPersonName" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="150">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 style="@style/InputEditText"
@@ -83,6 +88,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@={user.user.email}"
                                 android:hint="Email"
+                                android:maxLength="150"
                                 android:imeOptions="actionNext"
                                 android:inputType="textEmailAddress" />
 
@@ -90,7 +96,9 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="15">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 style="@style/InputEditText"
@@ -98,6 +106,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@={user.phoneNumber}"
                                 android:hint="Contacto"
+                                android:maxLength="15"
                                 android:imeOptions="actionNext"
                                 android:inputType="phone" />
 
@@ -125,7 +134,7 @@
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/signIn"
                             android:onClick="@{()->user.onSignUpButtonClicked()}"
-                            style="@style/PrimaryButton"
+                            style="@style/primaryButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"

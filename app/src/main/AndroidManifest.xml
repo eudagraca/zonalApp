@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mz.co.zonal">
-
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyBMAJs3jH_nbmPvE1pfDk3mB8P0PZ0aNhU" />
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
+
     <application
         android:name=".ZonalApplication"
         android:allowBackup="true"
@@ -14,17 +29,63 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ui.product.SellProductActivity"></activity>
+        <activity android:name=".view.ui.message.ChatListActivity"></activity>
+        <activity
+            android:name=".view.ui.product.CategorySearchActivity"
+            android:windowSoftInputMode="stateHidden" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_world" />
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+<!--        <meta-data-->
+<!--            android:name="com.google.firebase.messaging.default_notification_channel_id"-->
+<!--            android:value="@string/default_notification_channel_id" />-->
+
+        <activity
+            android:name=".view.ui.maps.MapsActivity"
+            android:label="@string/title_activity_maps"
+            android:theme="@style/AppThemeFullScreen" />
+        <activity android:name=".view.ui.message.MessagesActivity" />
+        <activity
+            android:name=".view.ui.product.SellProductActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".view.ui.product.EditProductActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".view.ui.product.ProductDetailsActivity" />
         <activity android:name=".view.ui.user.AccountInfoActivity" />
         <activity android:name=".view.ui.product.OwnProductsActivity" />
-        <activity android:name=".view.ui.ContainerScreen">
+        <activity android:name=".view.ui.product.SoldProductsActivity" />
+        <activity
+            android:name=".view.ui.ContainerScreen"
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".service.network.FirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

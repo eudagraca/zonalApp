@@ -6,19 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_login.*
 import mz.co.zonal.R
 import mz.co.zonal.databinding.FragmentLoginBinding
+import mz.co.zonal.service.factory.UserViewModelFactory
 import mz.co.zonal.service.model.User
-import mz.co.zonal.utils.UserViewModelFactory
+import mz.co.zonal.utils.Utils
 import mz.co.zonal.view.callback.AuthListener
 import mz.co.zonal.view.others.Dialog
 import mz.co.zonal.view.others.Message
 import mz.co.zonal.view.others.snackMessage
+import mz.co.zonal.view.ui.ContainerScreen
 import mz.co.zonal.viewmodel.UserViewModel
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
@@ -33,17 +36,22 @@ class LoginFragment : Fragment(), AuthListener, KodeinAware {
     private var dialog: Dialog? = null
 
     override val kodein by kodein()
-    private val factory : UserViewModelFactory by instance()
+    private val factory: UserViewModelFactory by instance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding: FragmentLoginBinding? = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_login, container, false)
-        val userViewModel = ViewModelProviders.of(this,
-            factory).get(UserViewModel::class.java)
+        val binding: FragmentLoginBinding? = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_login, container, false
+        )
+        val userViewModel = ViewModelProvider(this, factory)
+            .get(UserViewModel::class.java)
+
+        //Lock Drawer
+        (activity as ContainerScreen?)?.lockDrawer()
 
         binding!!.userViewModel = userViewModel
         binding.lifecycleOwner = this
@@ -53,7 +61,7 @@ class LoginFragment : Fragment(), AuthListener, KodeinAware {
             context.let {
                 findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
             }
-            Toast.makeText(context!!, "hiii", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "hiii", Toast.LENGTH_SHORT).show()
 
         }
         binding.tvForgotPass.setOnClickListener {
@@ -63,6 +71,11 @@ class LoginFragment : Fragment(), AuthListener, KodeinAware {
         }
         myView = binding.root
 
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            Utils.closeApp(requireContext())
+        }
+
+
         return myView
     }
 
@@ -71,25 +84,19 @@ class LoginFragment : Fragment(), AuthListener, KodeinAware {
 //        dialog!!.show()
     }
 
-    override fun onSuccess(user: User) {
-
-//            val session = Session(context!!)
-//            session.setLogIn(true, user.fullName, user.token
-//            , user.email, user.phoneNumber, user.id, user.createAt.toString())
-
-
+    override fun onSuccess(u: Any) {
+        val user = u as User
         root_login.snackMessage("${user.fullName}")
 
-
-            context.let {
-                findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
-            }
+        context.let {
+            findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+        }
 
     }
 
-    override fun onFailure(message: String){
+    override fun onFailure(message: String) {
 //        dialog!!.dialog().hide()
-        Message.messageError(context!!, message)
+        root_login.snackMessage(message)
     }
 
 

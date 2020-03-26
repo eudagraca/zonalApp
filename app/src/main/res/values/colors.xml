@@ -6,6 +6,8 @@
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
 
+    <color name="background_placeholder">#dddddd</color>
+    <color name="color_success">#2A9E2F</color>
 
     <color name="md_indigo50">#ffe8eaf6</color>
     <color name="md_indigo100">#ffc5cae9</color>

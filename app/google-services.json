@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "654203354922",
+    "firebase_url": "https://zonal-99acd.firebaseio.com",
+    "project_id": "zonal-99acd",
+    "storage_bucket": "zonal-99acd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654203354922:android:914b5575197ac84fc4a853",
+        "android_client_info": {
+          "package_name": "mz.co.zonal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654203354922-kbt5gj59tf8gacgumm1n99j8756l7cit.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mz.co.zonal",
+            "certificate_hash": "894b5839edfa1abcf5ac23734ddb4658f44b80cb"
+          }
+        },
+        {
+          "client_id": "654203354922-mohik0d94hvtcb47gojcq9c0620s971n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMAJs3jH_nbmPvE1pfDk3mB8P0PZ0aNhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654203354922-mohik0d94hvtcb47gojcq9c0620s971n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

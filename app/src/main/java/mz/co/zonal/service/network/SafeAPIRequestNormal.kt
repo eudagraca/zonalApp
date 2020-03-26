@@ -1,18 +1,19 @@
 package mz.co.zonal.service.network
 
-import android.util.Log
 import mz.co.zonal.utils.APIException
-import retrofit2.HttpException
-import retrofit2.Response
+import retrofit2.Call
 
-abstract class SaveAPIRequest {
-    suspend fun <T: Any> apiRequest(call: suspend () -> Response<T>): T{
+
+abstract class SafeAPIRequestNormal {
+    suspend fun <T : Any> apiRequestNormal(call: suspend () -> Call<T>): T {
         val response = call.invoke()
 
-        if (response.isSuccessful){
-            return response.body()!!
-        }else{
-            val error = response.code()
+        val responseFinal = response.execute()
+
+        if (responseFinal.isSuccessful) {
+            return responseFinal.body()!!
+        } else {
+            val error = responseFinal.code()
             var message: String? = null
 
             error.let {
@@ -33,9 +34,7 @@ abstract class SaveAPIRequest {
                         message = "Solicitação não encontrada"
                     }
                 }
-//                Log.i("INFOR", response.headers().toString())
-//                Log.i("BODY",  response.raw().networkResponse().toString())
-                throw APIException( message!!)
+                throw APIException(message!!)
             }
         }
     }

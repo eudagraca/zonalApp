@@ -1,127 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/material_grey50"
-    android:overScrollMode="never"
-    tools:context=".view.ui.FeedsFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScroll"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="mz.co.zonal.viewmodel.ProductViewModel" />
+
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:overScrollMode="never">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:background="@color/material_grey50"
+            android:overScrollMode="never"
+            tools:context=".view.ui.product.FeedsFragment">
 
-            <TextView
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_container_feeds"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Inicio"
-                android:textColor="@color/material_grey800"
-                android:textSize="@dimen/sub_header_text"
-                android:textStyle="bold" />
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:scrollbars="horizontal">
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
+                    <include layout="@layout/subcontent_feeds_placeholder" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
 
-                        <ImageView
+                        <include
+                            layout="@layout/list_product_placeholder"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_list" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1" />
 
-                        <ImageView
+                        <include
+                            layout="@layout/list_product_placeholder"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_group" />
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_star" />
-
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                        <TextView
+                        <include
+                            layout="@layout/list_product_placeholder"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Categorias"
-                            android:textAlignment="center" />
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1" />
 
-                        <TextView
+                        <include
+                            layout="@layout/list_product_placeholder"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Vendedores"
-                            android:textAlignment="center" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Favoritos"
-                            android:textAlignment="center" />
-
-
+                            android:layout_weight="1" />
                     </LinearLayout>
 
                 </LinearLayout>
 
-            </ScrollView>
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Vendas"
-                android:textColor="@color/material_grey800"
-                android:textSize="@dimen/sub_header_text"
-                android:textStyle="bold" />
+            <include
+                android:id="@+id/container_feed"
+                layout="@layout/content_main_feeds"
+                android:visibility="gone" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_products_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:nestedScrollingEnabled="false"
-                android:overScrollMode="never"
-                tools:listitem="@layout/list_product" />
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </FrameLayout>
+</layout>

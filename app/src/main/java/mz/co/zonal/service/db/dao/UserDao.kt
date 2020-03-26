@@ -16,4 +16,7 @@ interface UserDao {
 
     @Query("SELECT *FROM  user WHERE uid = $CURRENT_USER_ID")
     fun getUser(): LiveData<User>
+
+//    @Query("UPDATE User SET image=:user_image WHERE uid = $CURRENT_USER_ID")
+//    suspend fun setImage(user_image: ByteArray?)
 }

@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import mz.co.zonal.R
 import mz.co.zonal.service.model.User
-import mz.co.zonal.utils.UserViewModelFactory
+import mz.co.zonal.service.factory.UserViewModelFactory
 import mz.co.zonal.view.callback.AuthListener
 import mz.co.zonal.viewmodel.UserViewModel
 import org.kodein.di.KodeinAware
@@ -34,38 +34,33 @@ class SplashFragment : Fragment(), AuthListener, KodeinAware {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val userViewModel = ViewModelProviders.of(
-            this,
-            factory
+        val userViewModel = ViewModelProvider(
+            this, factory
         ).get(UserViewModel::class.java)
         userViewModel.authListener = this
 
 
         Handler().postDelayed({
             context?.let {
-                userViewModel.userLogged().observe(this, Observer {
+                userViewModel.userLogged.observe(viewLifecycleOwner, Observer {
 
                     if (it != null) {
                         findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
                     } else {
                         findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
                     }
-
                 })
             }
         }, 2500)
-
-
     }
 
     override fun onStarted() {
 
     }
 
-    override fun onSuccess(user: User) {
+    override fun onSuccess(user: Any) {
     }
 
     override fun onFailure(message: String) {
     }
-
 }
