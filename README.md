@@ -17,5 +17,4 @@ This app is an e-commerce platform that makes it possible to sell and buy in a c
 :white_check_mark: Login with username and password <br>
 
 ## Backend Service
-
-[ZonalAPI] (https://github.com/eudagraca/zonalAPI)
+- [ZonalAPI](https://github.com/eudagraca/zonalAPI)
