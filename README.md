@@ -3,11 +3,11 @@
 This app is an e-commerce platform that makes it possible to sell and buy in a close geographic space
 
 <p>
-<img width="337" alt="image" src="https://raw.githubusercontent.com/eudagraca/zonalApp/master/app/src/main/res/drawable/Mapa.png">
+<img width="237" alt="image" src="https://raw.githubusercontent.com/eudagraca/zonalApp/master/app/src/main/res/drawable/Mapa.png">
 
-<img width="339" alt="image" src="https://raw.githubusercontent.com/eudagraca/zonalApp/master/app/src/main/res/drawable/products.png">
+<img width="239" alt="image" src="https://raw.githubusercontent.com/eudagraca/zonalApp/master/app/src/main/res/drawable/products.png">
  </p> 
-<img width="539" alt="image" src="https://raw.githubusercontent.com/eudagraca/zonalApp/master/app/src/main/res/drawable/user.png">
+<img width="439" alt="image" src="https://raw.githubusercontent.com/eudagraca/zonalApp/master/app/src/main/res/drawable/user.png">
 
 
 ##### Tech stack:
