@@ -6,7 +6,7 @@ This app is an e-commerce platform that makes it possible to sell and buy in a c
 
 ##### Tech stack:
 
-- [Firebase](hhttps://firebase.google.com/)
+- [Firebase](https://firebase.google.com/)
 - [Material Design](https://m2.material.io/design)
 - [Kotlin](https://kotlinlang.org/)
 - [Android SDK](https://developer.android.com/)
