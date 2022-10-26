@@ -2,11 +2,14 @@
 
 This app is an e-commerce platform that makes it possible to sell and buy in a close geographic space
 
-
+<p>
 <img width="137" alt="image" src="https://raw.githubusercontent.com/eudagraca/zonalApp/master/app/src/main/res/drawable/Mapa.png">
 
 <img width="139" alt="image" src="https://raw.githubusercontent.com/eudagraca/zonalApp/master/app/src/main/res/drawable/products.png">
+  
+<img width="139" alt="image" src="https://raw.githubusercontent.com/eudagraca/zonalApp/master/app/src/main/res/drawable/user.png">
 
+</p>
 ##### Tech stack:
 
 - [Firebase](https://firebase.google.com/)
